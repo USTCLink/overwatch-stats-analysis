@@ -3,11 +3,9 @@ library(tidyverse)
 library(DT)
 library(ggplot2)
 library(ggthemes)
+library(shinythemes)
 
 
-
-#load("data/phs.RData")
-#load("data/mapstat.RData")
 StageName = c(
   "Overwatch League - Stage 1",                    
   "Overwatch League - Stage 1 - Title Matches",    
@@ -97,7 +95,8 @@ HeroName = c(
 
 
 # Define UI for dataset viewer app ----
-ui <- navbarPage("Overwatch Stats Analysis",
+ui <- fluidPage(theme = shinytheme("united"),
+  navbarPage(title=div(img(src="logo.png", height = "35px"), id = "Overwatch Stats Analysis"),
   
   tabPanel('Player Ranks',
            
@@ -160,8 +159,8 @@ ui <- navbarPage("Overwatch Stats Analysis",
   
   
   fluidRow(
-    column(12, align="center",
-           actionButton("do", "Plot Them !")
+    column(12, align="center", 
+           actionButton("do", "Plot Them !",class = "btn-primary",)
     )
   ),
   
@@ -221,7 +220,7 @@ tabPanel("History Record",
   
   fluidRow(
     column(12, align="center",
-           actionButton("search", "Search it !")
+           actionButton("search", "Search it !",class = "btn-primary",)
     )
   ),
   
@@ -275,7 +274,7 @@ tabPanel("History Record",
     
     fluidRow(
       column(12, align="center",
-             actionButton("go", "Plot Them !")
+             actionButton("go", "Plot Them !",class = "btn-primary",)
       )
     ),
     
@@ -308,7 +307,7 @@ tabPanel("History Record",
 
 #-----
 )
-
+)
 
 
 #---------------------------------------------------------------------------------------------------------
@@ -636,7 +635,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Final Blows Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -650,7 +649,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Eliminations Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -664,7 +663,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Hero Damage Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -678,7 +677,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Healing Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -692,7 +691,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Deaths Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -706,7 +705,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Deaths Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
@@ -720,7 +719,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
       geom_bar(stat='identity')+
       xlab("")+
       ggtitle('Obj Kills Career')+
-      theme_wsj()+
+      theme_economist_white()+
       theme(
         plot.title = element_text(hjust = 0.5)
       )
