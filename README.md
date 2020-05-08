@@ -8,5 +8,44 @@ Overwatch is a team-based multiplayer first-person shooter developed and publish
 
 ![](https://github.com/USTCLink/overwatch-stats-analysis/blob/master/img/overwatch.jpg)
 
+## What is Overwatch League
+
+The Overwatch League (OWL) is a professional esports league for the video game Overwatch, produced by its developer Blizzard Entertainment. The Overwatch League follows the model of other traditional North American professional sporting leagues by using a set of permanent, city-based teams backed by separate ownership groups
+
+![](https://i.redd.it/4iknmozkew121.jpg)
+
+## Why this Project
+
+Now Blizzard open the dataset about the Overwatch League. Fans are welcome to play with the data. The dataset has many small datasets in it, which contains the player data and the map data. They are also providing a list of approved player/hero statistics aggregated at the map level, as well as basic match/map/score statistics across attack/defense splits, for the league to date. These files and dashboards will be updated regularly throughout the 2020 season.
+
+As far as I know, there is always demands for professional coaches to analyze the player data. Usually, a professional e-sport team will hire two or three data analyist to help the head coach analyze the played data. However, in e-sport, the most important thing is that you do understand the game and the logic behind it. Therefore, some of the data analyists are pre-proplayers and does not know how to program. Thus, they will spend a lot of time to use simple methods to analyze the data, like Microsoft Excels.
+
+The goal for my project is to write a Shiny app that can analyze the data in many different ways. Using the software is much more convienient than use the traditional EXCEL way. Also, the visualization is much more clear. This project will help the professional team and coaches prepare their strategy and tactic for the match. 
+
+## About this software
+
+The _raw_data_ folder is used for maintain raw data from blizzard offcial website. If you want to analyze the data with other tools, you can use the data in this folder.
+
+The _data_ folder contains the rData file, that can be easily shared and load into R.
+
+The _R_ folder contains the source code of this software. The _Fetch_New_Data.R_ file is used to check the updates The _Load_Data.R_ file is used to clean the data and combine the raw data together, and load into R.
+
+The _app.R_ file is the core of this software, which is the Shiny app. It contains the UI and server parts. 
+
+## How to use this software
+
+Type the follwing command in your terminal:
+
+`git clone https://github.com/USTCLink/overwatch-stats-analysis.git`
+
+Then:
+
+`cd overwatch-stas-analysis/R`
+
+Finally:
+
+`source('app.R')`
+
+
 
 
