@@ -24,6 +24,19 @@ The goal for my project is to write a Shiny app that can analyze the data in man
 
 ## About this software
 
+```
+- Load_Data.R
+- Fetch_New_Data.R
+- app.R
+- raw_data - phs_2018
+           - phs_2019
+           - phs_2020
+           - match_map_stats
+- data - phs
+       - mapstat
+```
+
+
 The _raw_data_ folder is used for maintain raw data from blizzard offcial website. If you want to analyze the data with other tools, you can use the data in this folder.
 
 The _data_ folder contains the rData file, that can be easily shared and load into R.
@@ -31,6 +44,21 @@ The _data_ folder contains the rData file, that can be easily shared and load in
 The _R_ folder contains the source code of this software. The _Fetch_New_Data.R_ file is used to check the updates The _Load_Data.R_ file is used to clean the data and combine the raw data together, and load into R.
 
 The _app.R_ file is the core of this software, which is the Shiny app. It contains the UI and server parts. 
+
+In total, it's approximately 1k lines of R code.
+
+## Library Used
+
+Basically, I used almost all the library learnt in the STAT 479: Data Science in R class. Since the raw data is not tidy at all, their usage is quite frequent to make the data tidy and become the format that the software needs.
+
+```
+library(shiny)
+library(tidyverse)
+library(DT)
+library(ggplot2)
+library(ggthemes)
+library(shinythemes)
+```
 
 ## How to use this software
 
@@ -45,6 +73,8 @@ Then:
 Finally:
 
 `source('app.R')`
+
+
 
 
 
