@@ -347,13 +347,12 @@ finalblowsData = reactive(
     )%>% 
     group_by(player) %>% 
     summarise(
-      final_blows_per_10min = sum(`Final Blows`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600
+      final_blows_per_10min = round(sum(`Final Blows`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600, 2)
     ) %>% 
     filter(final_blows_per_10min != Inf | final_blows_per_10min != 0) %>% 
     arrange(desc(final_blows_per_10min))
-  
 )
-output$finalBlows = DT::renderDataTable({finalblowsData()},  options = list(pageLength = 10))
+output$finalBlows = renderDataTable({finalblowsData()},  options = list(pageLength = 10)) 
 
 
 eliminationsData = reactive(
@@ -366,7 +365,7 @@ eliminationsData = reactive(
                       )%>% 
                       group_by(player) %>% 
                       summarise(
-                        elim_per_10min = sum(Eliminations, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600
+                        elim_per_10min = round(sum(Eliminations, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600,2)
                       ) %>% 
                       filter(elim_per_10min != Inf | elim_per_10min != 0) %>% 
                       arrange(desc(elim_per_10min))
@@ -388,7 +387,7 @@ herodamageData = reactive(
       )%>% 
       group_by(player) %>% 
       summarise(
-        hero_damage_per_10min = sum(`Hero Damage Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600
+        hero_damage_per_10min = round(sum(`Hero Damage Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600,2)
       ) %>% 
       filter(hero_damage_per_10min != Inf & hero_damage_per_10min != 0) %>% 
       arrange(desc(hero_damage_per_10min))
@@ -403,7 +402,7 @@ herodamageData = reactive(
     )%>% 
     group_by(player) %>% 
     summarise(
-      hero_damage_per_10min = sum(`All Damage Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600
+      hero_damage_per_10min = round(sum(`All Damage Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600,2)
     ) %>% 
     filter(hero_damage_per_10min != Inf & hero_damage_per_10min != 0) %>% 
     arrange(desc(hero_damage_per_10min))
@@ -422,7 +421,7 @@ healingData = reactive(
     )%>% 
     group_by(player) %>% 
     summarise(
-      healing_per_10min = sum(`Healing Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600
+      healing_per_10min = round(sum(`Healing Done`, na.rm = TRUE) / sum(`Time Played`, na.rm = TRUE)  * 600,2)
     ) %>% 
     filter(healing_per_10min != Inf & healing_per_10min != 0) %>% 
     arrange(desc(healing_per_10min))
@@ -535,7 +534,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
        ) %>% 
        group_by(player) %>% 
        summarise(
-         elim_career = sum(stat_amount,na.rm = TRUE)  
+         elim_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(elim_career != Inf | elim_career != 0) %>% 
        arrange(desc(elim_career))
@@ -551,7 +550,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
      ) %>% 
        group_by(player) %>% 
        summarise(
-         final_blows_career = sum(stat_amount,na.rm = TRUE)  
+         final_blows_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(final_blows_career != Inf | final_blows_career != 0) %>% 
        arrange(desc(final_blows_career))
@@ -567,7 +566,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
      ) %>% 
        group_by(player) %>% 
        summarise(
-         hero_damage_career = sum(stat_amount,na.rm = TRUE)  
+         hero_damage_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(hero_damage_career != Inf | hero_damage_career != 0) %>% 
        arrange(desc(hero_damage_career))
@@ -582,7 +581,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
      ) %>% 
        group_by(player) %>% 
        summarise(
-         healing_career = sum(stat_amount,na.rm = TRUE)  
+         healing_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(healing_career != Inf | healing_career != 0) %>% 
        arrange(desc(healing_career))
@@ -598,7 +597,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
      ) %>% 
        group_by(player) %>% 
        summarise(
-         death_career = sum(stat_amount,na.rm = TRUE)  
+         death_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(death_career != Inf | death_career != 0) %>% 
        arrange(desc(death_career))
@@ -613,7 +612,7 @@ output$matchHistory = DT::renderDataTable({matchHistoryData()},  options = list(
      ) %>% 
        group_by(player) %>% 
        summarise(
-         obj_career = sum(stat_amount,na.rm = TRUE)  
+         obj_career = round(sum(stat_amount,na.rm = TRUE),2)  
        ) %>% 
        filter(obj_career != Inf | obj_career != 0) %>% 
        arrange(desc(obj_career))
